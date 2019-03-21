@@ -14,10 +14,10 @@ let poses = [];
 
 const options = {
     imageScaleFactor: 0.25,
-    outputStride: 8,
+    outputStride: 16,
     flipHorizontal: true,
     minConfidence: 0.5,
-    maxPoseDetections: 5,
+    maxPoseDetections: 1,
     scoreThreshold: 0.5,
     nmsRadius: 20,
     detectionType: 'single',
@@ -25,7 +25,8 @@ const options = {
 }
 
 function setup() {
-    createCanvas(1200, 800);
+    canvas = createCanvas(windowWidth, windowHeight);
+    canvas.style('display', 'block');
     video = createCapture(VIDEO);
     video.size(width, height);
 
@@ -50,7 +51,7 @@ function draw() {
 
     // We can call both functions to draw all keypoints and the skeletons
     drawKeypoints();
-    // drawSkeleton();
+    drawSkeleton();
 }
 
 // A function to draw ellipses over the detected keypoints
